@@ -1,0 +1,235 @@
+/* body {
+    margin: 0;
+    padding: 0;
+    font-family:Times New Roman;
+    background: linear-gradient(150deg, #6c3483,  #58d68d );
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+.formulario{
+    width: 90vw;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: stretch;
+    background: transparent;
+}
+.formulario h1{ 
+    width: 400px;
+    margin-right: 0;
+    margin-left: auto;
+    text-align: center;
+    padding: 40px 0 20px 0;
+    border-bottom: 1px solid silver;
+}
+.formulario .campos{
+    width: 400px;
+    height: 100vh;
+    background: white;
+    border-radius: 10px 0 0 10px;
+    box-sizing: border-box;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.campos .username{
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 40px 0;
+}
+.username input{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+.username label{
+    position: absolute;
+    top: 30%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(50%);
+    font-size: 16px;
+    pointer-events: none;
+}
+.campos .contraseña{
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 50px 0;
+}
+.contraseña input{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+.contraseña label{
+    position: absolute;
+    top: 20%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(50%);
+    font-size: 16px;
+    pointer-events: none;
+}
+.recordar{
+    margin: -5px 0 20px 5px;
+    color: blue;
+    cursor: pointer;
+}
+.recordar :hover{
+    text-decoration: underline;
+}
+input[type="submit"]{
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+    background: #6c3483;
+    border-radius: 25px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    font-family:Times New Roman;
+}
+input[type="submit"]:hover{
+    border-color: purple;
+    transition: .5s;
+}
+.registrarse{
+    margin: 30px 0;
+    text-align: center;
+    font-size: 16px;
+    color: black;
+}
+.registrarse a{
+    color: blue;
+    text-decoration: none;
+}
+.registrarse a:hover{
+    text-decoration: underline;
+} */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f2f2f2;
+}
+
+.imagen-izquierda {
+    display: flex;
+    height: 100vh;
+}
+
+/* Lado izquierdo con imagen */
+.left {
+    flex: 2;
+}
+
+.left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Lado derecho con login */
+.formulario {
+    flex: 1;
+    background-color: #3f3f3f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    height: 50px;
+}
+
+/* Caja de login */
+.login-box {
+    background-color: white;
+    border-radius: 8px;
+    padding: 10px; /* Mantiene el espacio interior */
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    overflow: hidden; /* Para que el morado quede pegado a los bordes */
+}
+
+.login-box h2 {
+    background-color: #6a0dad; 
+    color: white;
+    padding: 15px;
+    margin: -20px -20px 20px -20px; /* Quita espacio a los lados y arriba, pero deja margen abajo */
+    border-radius: 6px 6px 0 0; /* Redondea solo arriba */
+    font-size: 1.2rem;
+}
+
+/* Inputs */
+.login-box label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 5px;
+    text-align: left;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+    background-color: black;
+    color: white;
+}
+
+/* Links */
+.links {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.links a {
+    color: black;
+    font-size: 0.9rem;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .imagen-izquierda {
+        flex-direction: column;
+    }
+
+    .left {
+        height: 40vh;
+    }
+
+    .formulario {
+        height: 60vh;
+    }
+}
