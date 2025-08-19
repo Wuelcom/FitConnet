@@ -14,7 +14,7 @@
     <div class="form-section">
         <!-- Logo y nombre -->
         <div class="logo">
-            <img src="logo.png" alt="Logo Fitconnet">
+            <img src="../img/logo.png" alt="Logo Fitconnet">
             <h1>Fitconnet</h1>
         </div>
 
@@ -22,22 +22,32 @@
         <div class="form-box">
             <h2><i>Crear Cuenta</i></h2>
 
-            <label>Nombre usuario:</label>
-            <input type="text" placeholder="Nombre usuario">
+            <form id="registerForm">
+            <label for="username">Usuario</label>
+            <input type="text" id="username" required>
+            <span id="uErr" hidden>El nombre debe tener al menos 3 caracteres</span>
 
-            <label>Contraseña:</label>
-            <input type="password" placeholder="Contraseña">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" required>
+            <span id="pErr" hidden>La contraseña debe tener al menos 8 caracteres</span>
 
-            <label>Verificación contraseña:</label>
-            <input type="password" placeholder="Verificación contraseña">
+            <label for="confirm">Confirmar contraseña</label>
+            <input type="password" id="confirm" required>
+            <span id="cErr" hidden>Las contraseñas no coinciden</span>
 
-            <button>Crear</button>
+            <label for="role">Registrarse como:</label>
+            <select id="role">
+                <option value="user">Usuario</option>            
+                <option value="admin">Administrador</option>
+            </select>
+
+            <button id="submitBtn" type="submit">Crear cuenta</button>
         </div>
 
         <!-- Botón Facebook -->
         <button class="facebook-btn">
-            <img src="img/facebook.png" alt="Facebook">
-            Iniciar sesión con Facebook
+            <img src="../img/facebook.png" alt="Facebook">
+            Registrarse con Facebook
         </button>
     </div>
 
@@ -45,5 +55,8 @@
     <div class="image-section"></div>
 
 </div>
+
+<!-- Importamos el JS -->
+<script src="Register.js"></script>
 </body>
 </html>

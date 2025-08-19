@@ -3,6 +3,7 @@ const form = document.getElementById("registerForm");
 const username = document.getElementById("username");
 const password = document.getElementById("password");
 const confirmPw = document.getElementById("confirm");
+const role = document.getElementById("role");
 const submitBtn = document.getElementById("submitBtn");
 
 // Elementos de error
@@ -84,11 +85,26 @@ form.addEventListener("submit", (e) => {
         return;
     }
 
-    const hash = btoa(password.value).split("").reverse().join("");
-    users[user] = { pw: hash, createdAt: new Date().toISOString() };
+     const hash = btoa(password.value).split("").reverse().join("");
+
+    // Guardamos también el rol
+    users[user] = { 
+        pw: hash, 
+        role: role.value,  // 👈 Guardamos el rol
+        createdAt: new Date().toISOString() 
+    };
+
     localStorage.setItem("fit_users", JSON.stringify(users));
 
     alert("¡Cuenta creada con éxito!");
+
+    // Redirigir según rol
+    if (role.value === "Admin") {
+        window.location.href = "../Admin/Admin.html";
+    } else {
+        window.location.href = "Fitconnet.html";
+    }
+
     form.reset();
     pwBar.style.width = "0%";
     submitBtn.disabled = true;

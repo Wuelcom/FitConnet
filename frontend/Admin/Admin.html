@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administrador</title>
+    <link rel="stylesheet" href="Admin.css">
+    <script defer src="Admin.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Biuenvenido Administrador</h1> 
+    </header> 
+    <main>
+        <section>
+                <h2>Panel de control</h2>
+                <ul>
+                    <li><a href="#">Gestión de Usuarios</a></li>
+                    <li><a href="#">Gestión de Planes</a></li>
+                    <li><a href="#">Configuraciones</a></li>  
+                    <li><a href="#">Reportes</a></li>                    
+                </ul>
+        </section>
+        
+        <section>
+                <button onclick="logout()">Cerrar Sesión</button>              
+        </section>
+
+    </main>
+
+    <script>
+        function logout() {
+            // Redirige al Login 
+            alert("Sesión cerrada correctamente.");
+            window.location.href = "../login.html"; // Redirigir al inicio
+        }
+    </script>
+</body>
+</html>
