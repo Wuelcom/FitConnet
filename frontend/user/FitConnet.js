@@ -10,7 +10,7 @@ window.addEventListener("scroll", function() {
 
 // Funcionalidad de los botones
 document.getElementById("cerrarSesion").addEventListener("click", function() {
-    window.location.href = "../login/login.html";
+    window.location.href = "/login/login.html";
 });
 
 document.getElementById("perfil").addEventListener("click", function() {

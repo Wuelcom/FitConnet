@@ -102,7 +102,7 @@ form.addEventListener("submit", (e) => {
     if (role.value === "Admin") {
         window.location.href = "../Admin/Admin.html";
     } else {
-        window.location.href = "Fitconnet.html";
+        window.location.href = "../user/Fitconnet.html";
     }
 
     form.reset();
