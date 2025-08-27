@@ -38,28 +38,62 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <link rel="stylesheet" href="../frontend/css/registro.css">
 </head>
 <body>
-    <h2>Registro</h2>
-    <?php if (isset($error)): ?>
-        <p style="color:red;"><?php echo htmlspecialchars($error); ?></p>
-    <?php endif; ?>
 
-    <form method="POST" action="registro.php">
-        <label>Nombre:</label>
-        <input type="text" name="nombre" required><br>
+<div class="register-container">
 
-        <label>Correo:</label>
-        <input type="email" name="correo" required><br>
+    <!-- Columna izquierda: formulario -->
+    <div class="form-section">
+        <!-- Logo y nombre -->
+        <div class="logo">
+            <img src="../img/logo.png" alt="Logo Fitconnet">
+            <h1>Fitconnet</h1>
+        </div>
 
-        <label>Contraseña:</label>
-        <input type="password" name="password" required><br>
+        <!-- Formulario -->
+        <div class="form-box">
+            <h2><i>Crear Cuenta</i></h2>
 
-        <label>Rol:</label>
-        <select name="rol">
-            <option value="usuario">Usuario</option>
-            <option value="admin">Administrador</option>
-        </select><br><br>
+                <?php if (isset($error)): ?>
+                    <div class="error-msg" style="color:red; text-align:center; margin-bottom:10px;"> <?= htmlspecialchars($error) ?> </div>
+                <?php endif; ?>
+                <form id="registerForm" method="POST" autocomplete="off" novalidate>
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                    <span id="nombreErr" class="error-msg" hidden>El nombre debe tener al menos 3 caracteres</span>
 
-        <button type="submit">Registrarse</button>
-    </form>
+                    <label for="correo">Correo electrónico</label>
+                    <input type="email" id="correo" name="correo" required>
+                    <span id="correoErr" class="error-msg" hidden>Ingrese un correo válido</span>
+
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" required>
+                    <span id="passErr" class="error-msg" hidden>La contraseña debe tener al menos 6 caracteres</span>
+
+                    <label for="rol">Registrarse como:</label>
+                    <select id="rol" name="rol">
+                        <option value="usuario">Usuario</option>
+                        <option value="admin">Administrador</option>
+                    </select>
+
+                    <input type="submit" value="Registrarse">
+                </form>
+        </div>
+
+        <!-- Botón Facebook -->
+        <button class="facebook-btn">
+            <img src="../img/facebook.png" alt="Facebook">
+            Registrarse con Facebook
+        </button>
+    </div>
+
+    <!-- Columna derecha: imagen -->
+    <div class="image-section"></div>
+
+</div>
+
+<!-- Importamos el JS -->
+<!-- Importamos el JS -->
+<script src="../frontend/js/registro.js"></script>
 </body>
 </html>
+
