@@ -15,3 +15,4 @@ function moverCarrusel(direccion) {
   const tarjeta = items[0].offsetWidth + 20; // ancho + gap
   carrusel.style.transform = `translateX(-${indice * tarjeta}px)`;
 }
+
