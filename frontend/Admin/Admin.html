@@ -10,28 +10,24 @@
 <body>
   <!-- Barra de navegación -->
   <header class="navbar">
+    <!-- Logo -->
     <div class="logo-container">
-      <img src="../img/logo.png" alt="Fitconnet" class="logo">
+      <img src="../img/logo.png" alt="FitConnect" class="logo">
     </div>
 
     <!-- Botón menú -->
     <div class="menu-container">
       <button class="menu-btn">☰ Menú</button>
       <ul class="dropdown">
-        <li><a href="#">Gestión de Usuarios</a></li>
-        <li><a href="#">Gestión de Planes</a></li>
-        <li><a href="#">Configuraciones</a></li>
-        <li><a href="#">Reportes</a></li>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Nuestros servicios</a></li>
+        <li><a href="#">Nuestros planes</a></li>
+        <li><a href="#">Contáctanos</a></li>
       </ul>
     </div>
 
-    <!-- Navegación -->
-    <nav>
-      <a href="#">Inicio</a>
-      <a href="#">Nuestros Servicios</a>
-      <a href="#">Nuestros Planes</a>
-      <a href="#">Contacto</a>
-    </nav>
+    <!-- Título centrado -->
+    <h1 class="navbar-title">FitConnect Control</h1>
 
     <!-- Botones -->
     <div class="actions">
@@ -44,9 +40,33 @@
   <!-- Contenido principal -->
   <main class="content">
     <h1>Bienvenido Administrador</h1>
-    <img src="musculoso.jpg" alt="Imagen Fitconnet">
+
+    <!-- Carrusel -->
+    <div class="carrusel-container">
+      <button class="prev" onclick="moverCarrusel(-1)">&#10094;</button>
+      <div class="carrusel">
+        <div class="item">
+          <img src="../img/Gestion_user.jpg" alt="Gestión de Usuarios">
+          <h2>Gestión de Usuarios</h2>
+        </div>
+        <div class="item">
+          <img src="../img/Gestion_planes.jpg" alt="Gestión de Planes">
+          <h2>Gestión de Planes</h2>
+        </div>
+        <div class="item">
+          <img src="../img/Configuracion.jpg" alt="Configuraciones">
+          <h2>Configuraciones</h2>
+        </div>
+        <div class="item">
+          <img src="../img/Reportes.jpg" alt="Reportes">
+          <h2>Reportes</h2>
+        </div>
+      </div>
+      <button class="next" onclick="moverCarrusel(1)">&#10095;</button>
+    </div>
   </main>
 
+  <!-- Scripts -->
   <script>
     const menuBtn = document.querySelector('.menu-btn');
     const dropdown = document.querySelector('.dropdown');
