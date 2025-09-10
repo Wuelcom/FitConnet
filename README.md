@@ -1,17 +1,23 @@
-# FitConnet
-Proyecto FitConnet
+Proyecto Final: FitConnet
 
-Sistema web de seguimiento de rutinas, dietas y progreso físico.
+Este proyecto es un sistema web para gestión de usuarios y planes de gimnasio, desarrollado con:
 
-## Estructura del proyecto
+Frontend: HTML, CSS, JavaScript (Fetch API, LocalStorage para sesión).
 
-- `/backend`: API REST con FastAPI
-- `/frontend`: Interfaz web
-- `/db`: Base de datos MySQL y scripts
-- `/docs`: Documentación del proyecto
+Backend: FastAPI (Python), con base de datos MySQL.
 
-## Cómo iniciar el servidor backend
+Incluye funcionalidades para:
+Registro de usuarios
+Inicio de sesión con roles (Admin / Usuario)
+Panel de administrador (gestión de usuarios)
+Panel de usuario (planes disponibles, sesión, perfil básico)
 
-1. Instala dependencias:
-   ```bash
-   pip install fastapi uvicorn
+Requisitos
+
+Antes de iniciar, instala lo siguiente:
+
+Python 3.11+
+
+Node.js (opcional, si usas npm para el frontend)
+
+MySQL

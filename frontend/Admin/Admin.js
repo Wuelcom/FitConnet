@@ -1,18 +1,40 @@
-let indice = 0;
+const tabla = document.querySelector("#tablaUsuarios tbody");
+const logoutBtn = document.getElementById("logout");
 
-function moverCarrusel(direccion) {
-  const carrusel = document.querySelector('.carrusel');
-  const items = document.querySelectorAll('.item');
-  const itemsPorVista = 3; // Tarjetas visibles
-  const total = items.length;
+async function cargarUsuarios() {
+  const res = await fetch("http://127.0.0.1:8000/usuarios/");
+  const usuarios = await res.json();
 
-  // Ajustar índice
-  indice += direccion;
-  if (indice < 0) indice = 0;
-  if (indice > total - itemsPorVista) indice = total - itemsPorVista;
-
-  // Calcular ancho de cada tarjeta
-  const tarjeta = items[0].offsetWidth + 20; // ancho + gap
-  carrusel.style.transform = `translateX(-${indice * tarjeta}px)`;
+  tabla.innerHTML = "";
+  usuarios.forEach(u => {
+    const row = `
+      <tr>
+        <td>${u.id_usuario}</td>
+        <td>${u.nombre}</td>
+        <td>${u.correo_electronico}</td>
+        <td>${u.rol}</td>
+        <td>
+          <button class="edit" onclick="editar(${u.id_usuario})">Editar</button>
+          <button onclick="eliminar(${u.id_usuario})">Eliminar</button>
+        </td>
+      </tr>`;
+    tabla.innerHTML += row;
+  });
 }
 
+async function eliminar(id) {
+  if (!confirm("¿Eliminar usuario?")) return;
+  await fetch(`http://127.0.0.1:8000/usuarios/${id}`, { method: "DELETE" });
+  cargarUsuarios();
+}
+
+function editar(id) {
+  alert("Funcionalidad de editar pendiente (se puede abrir modal o formulario)");
+}
+
+logoutBtn.addEventListener("click", () => {
+  localStorage.removeItem("usuario");
+  window.location.href = "../login/login.html";
+});
+
+cargarUsuarios();

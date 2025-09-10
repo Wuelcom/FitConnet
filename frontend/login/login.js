@@ -1,25 +1,29 @@
-// Simulación de usuarios con roles
-const users = [
-  { username: "admin", password: "1234", role: "admin" },
-  { username: "juan", password: "abcd", role: "user" }
-];
+const form = document.getElementById("loginForm");
+const errorMsg = document.getElementById("errorMsg");
 
-document.getElementById("loginForm").addEventListener("submit", function(event) {
-  event.preventDefault();
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
+  const data = {
+    nombre: document.getElementById("username").value,
+    contrasena: document.getElementById("password").value
+  };
 
-  // Buscar usuario en la lista
-  const user = users.find(u => u.username === username && u.password === password);
+  const res = await fetch("http://127.0.0.1:8000/usuarios/login", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(data)
+  });
 
-  if (user) {
-    if (user.role === "admin") {
-      window.location.href = "Admin.html"; // redirige a admin
+  if (res.ok) {
+    const user = await res.json();
+    localStorage.setItem("usuario", JSON.stringify(user));
+    if (user.rol === "Admin") {
+      window.location.href = "../admin/admin.html";
     } else {
-      window.location.href = "Fitconnet.html"; // redirige a usuario normal
+      window.location.href = "../user/fitconnet.html";
     }
   } else {
-    alert("Usuario o contraseña incorrectos");
+    errorMsg.hidden = false;
   }
 });

@@ -118,118 +118,33 @@ input[type="submit"]:hover{
     text-decoration: underline;
 } */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
 body {
-    background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+  background: #f3f3f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.login-container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 300px;
+  text-align: center;
+}
+input {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+}
+button {
+  width: 100%;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
 }
 
-.imagen-izquierda {
-    display: flex;
-    height: 100vh;
-}
-
-/* Lado izquierdo con imagen */
-.left {
-    flex: 2;
-}
-
-.left img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Lado derecho con login */
-.formulario {
-    flex: 1;
-    background-color: #3f3f3f;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-}
-
-/* Logo */
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: white;
-    margin-bottom: 20px;
-}
-
-.logo img {
-    height: 50px;
-}
-
-/* Caja de login */
-.login-box {
-    background-color: white;
-    border-radius: 8px;
-    padding: 10px; /* Mantiene el espacio interior */
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-    overflow: hidden; /* Para que el morado quede pegado a los bordes */
-}
-
-.login-box h2 {
-    background-color: #6a0dad; 
-    color: white;
-    padding: 15px;
-    margin: -20px -20px 20px -20px; /* Quita espacio a los lados y arriba, pero deja margen abajo */
-    border-radius: 6px 6px 0 0; /* Redondea solo arriba */
-    font-size: 1.2rem;
-}
-
-/* Inputs */
-.login-box label {
-    display: block;
-    font-weight: bold;
-    margin: 10px 0 5px;
-    text-align: left;
-}
-
-.login-box input {
-    width: 100%;
-    padding: 8px;
-    border-radius: 6px;
-    border: none;
-    background-color: black;
-    color: white;
-}
-
-/* Links */
-.links {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.links a {
-    color: black;
-    font-size: 0.9rem;
-    text-decoration: underline;
-}
-
-@media (max-width: 768px) {
-    .imagen-izquierda {
-        flex-direction: column;
-    }
-
-    .left {
-        height: 40vh;
-    }
-
-    .formulario {
-        height: 60vh;
-    }
-}
