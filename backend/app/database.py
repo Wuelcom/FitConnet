@@ -1,30 +1,26 @@
-# app/database.py
-
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from dotenv import load_dotenv
 
-# Opción 1 → Usando mysqlconnector
-SQLALCHEMY_DATABASE_URL = "mysql+mysqlconnector://root:@localhost:3306/FitConnet"
+# Cargar variables de entorno
+load_dotenv()
 
-# Opción 2 → Usando PyMySQL
-# SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:@localhost:3306/FitConnet"
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_HOST = os.getenv("DB_HOST", "localhost")
+DB_PORT = os.getenv("DB_PORT", "3306")
+DB_NAME = os.getenv("DB_NAME")
 
-# =====================================================
-# CONFIGURACIÓN DEL MOTOR Y SESIÓN
-# =====================================================
-# Crear el motor de conexión
+SQLALCHEMY_DATABASE_URL = (
+    f"mysql+pymysql://root:@localhost:3306/FitConnet"
+)
+
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
-
-# Crear la clase Base para los modelos
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
-# Crear la sesión para interactuar con la base de datos
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-# =====================================================
-# FUNCIÓN PARA OBTENER SESIONES EN DEPENDENCIAS DE FASTAPI
-# =====================================================
 def get_db():
     db = SessionLocal()
     try:

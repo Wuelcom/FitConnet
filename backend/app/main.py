@@ -1,14 +1,14 @@
 from fastapi import FastAPI
-from app.database import engine, Base
-from app.routers import usuarios
+from . import models, database
+from .routers import users
 
-app = FastAPI()
+models.Base.metadata.create_all(bind=database.engine)
 
-# Crear tablas si no existen
-Base.metadata.create_all(bind=engine)
+app = FastAPI(title="FitConnet API")
 
-app.include_router(usuarios.router)
+# Routers
+app.include_router(users.router)
 
 @app.get("/")
-def read_root():
-    return {"mensaje": "Hola, FastAPI está funcionando 🚀"}
+def root():
+    return {"message": "Bienvenido a FitConnet API 🚀"}

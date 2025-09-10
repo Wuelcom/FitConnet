@@ -1,15 +1,14 @@
 from pydantic import BaseModel
 
-class UsuarioBase(BaseModel):
+class UserBase(BaseModel):
     nombre: str
     correo_electronico: str
+    rol: str
+
+class UserCreate(UserBase):
     contrasena: str
-    id_objetivo: int | None = None
 
-class UsuarioCreate(UsuarioBase):
-    pass
-
-class Usuario(UsuarioBase):
+class UserOut(UserBase):
     id_usuario: int
 
     class Config:
