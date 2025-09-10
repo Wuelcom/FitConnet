@@ -2,8 +2,10 @@
 // frontend/public/usuario.php
 session_start();
 
-// Validar si está logueado como usuario
-if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'user') {
+$rootPath = realpath(__DIR__ . "/../../");
+
+// Validar rol usuario
+if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['rol'] !== 'usuario') {
     header("Location: login.php");
     exit();
 }
@@ -40,14 +42,15 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'user') {
         <div class="right-buttons">
             <button id="chatIA">Chatear con la IA</button>
             <button id="perfil">Perfil</button>
-            <a href="../backend/app/Controlador/Logout.php">
+            <!-- Cerrar sesión -->
+            <a href="../../Backend/app/Controlador/Logout.php">
                 <button id="cerrarSesion">Cerrar Sesión</button>
             </a>
         </div>
     </header>
 
     <section class="section2">
-        <h1>Bienvenido <?= $_SESSION['usuario']; ?> a FitConnet</h1>
+        <h1>Bienvenido <?= htmlspecialchars($_SESSION['usuario']['nombre']); ?> a FitConnet</h1>
         <img src="../img/Seccion2.png" alt="Gimnasio" class="background-img">
     </section>
 

@@ -1,6 +1,10 @@
 <?php
-require_once __DIR__ . "/../Modelo/Usuario.php";
-require_once __DIR__ . "/../Modelo/database.php";
+// Ruta raíz del proyecto (sube desde /Backend/app/Controlador)
+$rootPath = realpath(__DIR__ . "/../../../");
+
+// Incluir modelo y base de datos
+require_once $rootPath . "/Backend/app/Modelo/Usuario.php";
+require_once $rootPath . "/Backend/app/Database/Database.php";
 
 class UsuarioController {
 
@@ -10,11 +14,8 @@ class UsuarioController {
 
         $usuario->nombre = $nombre;
         $usuario->correo_electronico = $correo;
-        $usuario->contrasena = $contrasena;
+        $usuario->contrasena = password_hash($contrasena, PASSWORD_BCRYPT); // 🔐 encriptación
         $usuario->rol = strtolower($rol); // siempre minúsculas
-        // DEBUG
-        // echo "ROL EN CONTROLADOR: " . $usuario->rol; exit;
-
 
         return $usuario->crear();
     }

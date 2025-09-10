@@ -20,17 +20,16 @@ class Usuario {
                   VALUES (:nombre, :correo_electronico, :contrasena, :rol)";
         $stmt = $this->conn->prepare($query);
 
-        // Encriptar contraseña
-        $this->contrasena = password_hash($this->contrasena, PASSWORD_BCRYPT);
+        // ✅ Asegurar que la contraseña llegue encriptada 
+        // (por si olvidamos en el controlador)
+        if (!password_get_info($this->contrasena)['algo']) {
+            $this->contrasena = password_hash($this->contrasena, PASSWORD_BCRYPT);
+        }
 
         $stmt->bindParam(":nombre", $this->nombre);
         $stmt->bindParam(":correo_electronico", $this->correo_electronico);
         $stmt->bindParam(":contrasena", $this->contrasena);
         $stmt->bindParam(":rol", $this->rol);
-
-        // DEBUG: Verifica el valor del rol antes de guardar
-        // Quita esto después de probar
-        // echo "ROL A GUARDAR: " . $this->rol; exit;
 
         return $stmt->execute();
     }
