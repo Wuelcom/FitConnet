@@ -22,3 +22,4 @@ def create_user(db: Session, user: schemas.UserCreate):
 
 def get_users(db: Session, skip: int = 0, limit: int = 10):
     return db.query(models.User).offset(skip).limit(limit).all()
+
