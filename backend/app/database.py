@@ -1,26 +1,25 @@
-import os
+# app/database.py
+"""
+Crea el engine y sessionmaker de SQLAlchemy.
+Provee una dependencia get_db() para inyectar la sesión en rutas.
+"""
+
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
-from dotenv import load_dotenv
+from sqlalchemy.orm import sessionmaker, declarative_base
+from app.config import DATABASE_URL
 
-# Cargar variables de entorno
-load_dotenv()
+SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:@localhost:3306/FitConnet"
 
-DB_USER = os.getenv("DB_USER")
-DB_PASSWORD = os.getenv("DB_PASSWORD")
-DB_HOST = os.getenv("DB_HOST", "localhost")
-DB_PORT = os.getenv("DB_PORT", "3306")
-DB_NAME = os.getenv("DB_NAME")
+# Engine (sin async para simplicidad)
+engine = create_engine(DATABASE_URL, echo=False, future=True)
 
-SQLALCHEMY_DATABASE_URL = (
-    f"mysql+pymysql://root:@localhost:3306/FitConnet"
-)
+# Session local factory
+SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False, future=True)
 
-engine = create_engine(SQLALCHEMY_DATABASE_URL)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
+# Dependency
 def get_db():
     db = SessionLocal()
     try:

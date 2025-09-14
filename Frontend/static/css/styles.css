@@ -1,0 +1,22 @@
+/* app/static/css/styles.css
+Estilos sencillos para la demo.
+*/
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 20px;
+  background: #f7f7fb;
+}
+main{
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+h1 { color: #5b21b6; } /* morado */
+section { margin-top: 20px; }
+form input { display:block; margin:8px 0; padding:8px; width: 100%; max-width: 400px;}
+button { background:#5b21b6; color:white; border:none; padding:8px 12px; border-radius:6px; cursor:pointer;}
+button:disabled { opacity:0.6; }
+#usersList li { margin:6px 0; padding:8px; background:#f2f2f7; border-radius:6px;}
