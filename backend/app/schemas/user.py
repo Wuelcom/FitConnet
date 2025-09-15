@@ -3,7 +3,7 @@
 Schemas Pydantic para User (entrada y salida).
 """
 from pydantic import BaseModel, EmailStr
-from typing import Optional, list
+from typing import Optional, List
 from datetime import datetime, date
 
 class UserBase(BaseModel):
@@ -34,4 +34,4 @@ class UserOut(UserBase):
     created_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True

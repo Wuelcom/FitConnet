@@ -1,9 +1,21 @@
-fastapi
-uvicorn
-sqlalchemy
-pymysql
-mysql-connector-python
-python-dotenv
-passlib[bcrypt]
-python-jose
+# --- Framework principal ---
+fastapi[all]        # Framework para APIs + incluye uvicorn, starlette
 
+# --- Base de datos ---
+sqlalchemy>=2.0     # ORM para conexión a MySQL
+pymysql             # Driver para MySQL
+alembic             # Migraciones de base de datos
+
+# --- Validación y Schemas ---
+pydantic>=2.0       # Validación de datos para las APIs
+pydantic-settings   # Para manejar configuración con .env (opcional)
+
+# --- Utilidades ---
+python-dotenv       # Cargar variables de entorno desde .env
+passlib[bcrypt]     # Encriptar contraseñas (si usas hashing)
+python-multipart    # Para subir archivos desde formularios
+email-validator     # Validar emails en schemas
+
+# --- Testing y Desarrollo ---
+pytest              # Para tests (opcional)
+httpx               # Cliente HTTP para pruebas

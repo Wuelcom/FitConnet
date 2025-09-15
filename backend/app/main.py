@@ -1,40 +1,55 @@
-# app/main.py
-"""
-Punto de entrada de la aplicación FastAPI.
-Registra routers y sirve archivos estáticos (front-end).
-"""
+# backend/app/main.py
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from app.config import API_PREFIX
 from app.database import engine, Base
-from app.routers import user, role, rutina, ejercicio, logro, dieta, progreso, publicacion, objetivo  # importa routers existentes
-# importa los otros routers si los creas: roles, rutinas, etc.
+from app.config import API_PREFIX
+from app.routers import (
+    user,
+    rol,
+    rutina,
+    ejercicio,
+    logro,
+    dieta,
+    progreso,
+    publicacion,
+    objetivo,
+    auth,
+    admin
+)
 
-# Crea tablas si no existen (útil en dev)
+# ======================================================
+# Crear todas las tablas (útil en desarrollo)
+# ======================================================
 Base.metadata.create_all(bind=engine)
 
+# ======================================================
+# Inicializar FastAPI
+# ======================================================
 app = FastAPI(title="FitConnet API")
 
-# Routers
-app.include_router(user.router)
-app.include_router(role.router)
-app.include_router(rutina.router)
-app.include_router(ejercicio.router)
-app.include_router(logro.router)
-app.include_router(dieta.router)
-app.include_router(progreso.router)
-app.include_router(publicacion.router)
-app.include_router(objetivo.router)
-app.include_router(auth_router.router)
+# ======================================================
+# Montar carpeta estática (si la creas más adelante)
+# ======================================================
+# app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
-# montar carpeta estática (tu HTML/CSS/JS)
-app.mount("/static", StaticFiles(directory="app/static"), name="static")
+# ======================================================
+# Registrar routers
+# ======================================================
+app.include_router(user.router, prefix=f"{API_PREFIX}/users", tags=["Usuarios"])
+app.include_router(rol.router, prefix=f"{API_PREFIX}/roles", tags=["Roles"])
+app.include_router(rutina.router, prefix=f"{API_PREFIX}/rutinas", tags=["Rutinas"])
+app.include_router(ejercicio.router, prefix=f"{API_PREFIX}/ejercicios", tags=["Ejercicios"])
+app.include_router(logro.router, prefix=f"{API_PREFIX}/logros", tags=["Logros"])
+app.include_router(dieta.router, prefix=f"{API_PREFIX}/dietas", tags=["Dietas"])
+app.include_router(progreso.router, prefix=f"{API_PREFIX}/progresos", tags=["Progresos"])
+app.include_router(publicacion.router, prefix=f"{API_PREFIX}/publicaciones", tags=["Publicaciones"])
+app.include_router(objetivo.router, prefix=f"{API_PREFIX}/objetivos", tags=["Objetivos"])
+app.include_router(auth.router, prefix=f"{API_PREFIX}/auth", tags=["Autenticación"])
+app.include_router(admin.router, prefix=f"{API_PREFIX}/admin", tags=["Administrador"])
 
-# include routers
-app.include_router(users.router, prefix=f"{API_PREFIX}", tags=["users"])
-app.include_router(ejercicios.router, prefix=f"{API_PREFIX}", tags=["ejercicios"])
-# incluir otros routers: roles.router, rutinas.router, etc.
-
+# ======================================================
+# Ruta raíz
+# ======================================================
 @app.get("/")
 def root():
-    return {"message": "FitConnet API - ir a /static/index.html para la interfaz"}
+    return {"message": "FitConnet API - ir a /docs para la documentación Swagger"}

@@ -16,4 +16,4 @@ class EjercicioUpdate(EjercicioBase):
 class EjercicioOut(EjercicioBase):
     id: int
     class Config:
-        orm_mode = True
+        from_attributes = True
